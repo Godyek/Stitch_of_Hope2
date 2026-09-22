@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order | Stitch of Hope</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="cart-page">
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="logo" href="index.html"><img src="img.jpg/Stc.jpg" alt="Stitch of Hope"></a>
+    <a class="nav-message" href="programs.html">Stitch with purpose <span>→</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="impact.html">Impact</a>
+      <a href="financials.html">Financial Plan</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html" class="active">Cart <span class="cart-count" aria-label="Items in cart">0</span></a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="page-intro">
+  <div class="container">
+    <p class="eyebrow">STITCH OF HOPE SHOP</p>
+    <h1>Order with purpose.</h1>
+    <p class="lead">Choose a piece made through our tailoring and fashion programme. Every order helps create practical opportunities for our learners.</p>
+  </div>
+</section>
+<section class="section light">
+  <div class="container shop-layout">
+    <div>
+      <div class="section-head shop-heading">
+        <p class="eyebrow">AVAILABLE PIECES</p>
+        <h2>Made locally, made with care.</h2>
+        <p>Browse our current selection and add items to your cart. For custom sizes, fabrics or bulk orders, contact our team after adding your request.</p>
+      </div>
+      <div class="product-grid">
+        <article class="product-card">
+          <img src="img.jpg/p1.jpeg" alt="Handmade fashion piece in a bright patterned fabric">
+          <div class="product-info"><h3>Signature Print Dress</h3><p>Bright patterned dress made for everyday confidence.</p><strong>UGX 85,000</strong><button class="btn primary add-to-cart" type="button" data-id="signature-dress">Add to cart</button></div>
+        </article>
+        <article class="product-card">
+          <img src="img.jpg/p3.jpeg" alt="Handmade tailored outfit in a colourful fabric">
+          <div class="product-info"><h3>Tailored Statement Set</h3><p>A polished two-piece look for special occasions.</p><strong>UGX 120,000</strong><button class="btn primary add-to-cart" type="button" data-id="statement-set">Add to cart</button></div>
+        </article>
+        <article class="product-card">
+          <img src="img.jpg/p4.jpeg" alt="African-inspired handmade garment on display">
+          <div class="product-info"><h3>Classic African Wear</h3><p>Comfortable tailoring with a distinctive local character.</p><strong>UGX 95,000</strong><button class="btn primary add-to-cart" type="button" data-id="classic-wear">Add to cart</button></div>
+        </article>
+        <article class="product-card">
+          <img src="img.jpg/p5.jpeg" alt="Handmade garment created by Stitch of Hope learners">
+          <div class="product-info"><h3>Everyday Essential</h3><p>A versatile garment crafted for easy, confident wear.</p><strong>UGX 70,000</strong><button class="btn primary add-to-cart" type="button" data-id="everyday-essential">Add to cart</button></div>
+        </article>
+      </div>
+    </div>
+    <aside class="cart-panel" aria-labelledby="cart-title">
+      <div class="cart-panel-head"><div><p class="eyebrow">YOUR SELECTION</p><h2 id="cart-title">Your cart</h2></div><span class="cart-total-items">0 items</span></div>
+      <div class="cart-items" aria-live="polite"></div>
+      <div class="empty-cart"><p>Your cart is waiting for its first piece.</p><span>Add an item to begin your order.</span></div>
+      <div class="cart-summary"><div><span>Subtotal</span><strong class="cart-subtotal">UGX 0</strong></div><p>Choose a payment option below. We will confirm delivery and final fitting details with you.</p><div class="payment-options"><button class="payment-option" type="button" data-payment="airtel"><span class="payment-brand"><img src="img.jpg/airtel.png" alt="Airtel Money"><strong>Airtel Money Merchant Code</strong></span><span><strong>1213001</strong></span></button><button class="payment-option" type="button" data-payment="mtn"><span class="payment-brand"><img src="img.jpg/MoMo_Logo.png" alt="MTN MoMo"><strong>MTN MoMo Code</strong></span><span><strong>502913</strong></span></button></div>
+      <p>Use the code above to make payment, then contact us with your order details.</p></div><a class="btn primary checkout-link" href="contact.html">Confirm order with contact</a><button class="clear-cart" type="button">Clear cart</button></div>
+    </aside>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="container footer-wrap">
+    <div><strong>STITCH OF HOPE</strong><br><small>Tailoring & Fashion Design</small></div>
+    <p>© 2026 Stitch of Hope Tailoring & Fashion Design. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+  const products = {
+    'signature-dress': { name: 'Signature Print Dress', price: 85000, image: 'img.jpg/p1.jpeg' },
+    'statement-set': { name: 'Tailored Statement Set', price: 120000, image: 'img.jpg/p3.jpeg' },
+    'classic-wear': { name: 'Classic African Wear', price: 95000, image: 'img.jpg/p4.jpeg' },
+    'everyday-essential': { name: 'Everyday Essential', price: 70000, image: 'img.jpg/p5.jpeg' }
+  };
+  const storageKey = 'stitchOfHopeCart';
+  const paymentDetails = {
+    airtel: { name: 'Airtel Money Merchant Code', code: '1213001' },
+    mtn: { name: 'MTN MoMoPay Code', code: '502913' }
+  };
+  let cart = JSON.parse(localStorage.getItem(storageKey) || '{}');
+  const formatPrice = (price) => `UGX ${price.toLocaleString('en-US')}`;
+  const saveCart = () => localStorage.setItem(storageKey, JSON.stringify(cart));
+  const updateCart = () => {
+    const cartItems = document.querySelector('.cart-items');
+    const emptyCart = document.querySelector('.empty-cart');
+    const itemCount = Object.values(cart).reduce((sum, quantity) => sum + quantity, 0);
+    const subtotal = Object.entries(cart).reduce((sum, [id, quantity]) => sum + products[id].price * quantity, 0);
+    document.querySelector('.cart-count').textContent = itemCount;
+    document.querySelector('.cart-total-items').textContent = `${itemCount} item${itemCount === 1 ? '' : 's'}`;
+    document.querySelector('.cart-subtotal').textContent = formatPrice(subtotal);
+    emptyCart.hidden = itemCount > 0;
+    cartItems.innerHTML = Object.entries(cart).map(([id, quantity]) => {
+      const product = products[id];
+      return `<div class="cart-item"><img src="${product.image}" alt=""><div class="cart-item-info"><strong>${product.name}</strong><span>${formatPrice(product.price)}</span><div class="quantity-controls"><button type="button" data-action="decrease" data-id="${id}" aria-label="Remove one ${product.name}">−</button><span>${quantity}</span><button type="button" data-action="increase" data-id="${id}" aria-label="Add one ${product.name}">+</button><button class="remove-item" type="button" data-action="remove" data-id="${id}">Remove</button></div></div></div>`;
+    }).join('');
+  };
+  document.querySelectorAll('.add-to-cart').forEach((button) => button.addEventListener('click', () => {
+    const id = button.dataset.id;
+    cart[id] = (cart[id] || 0) + 1;
+    saveCart();
+    updateCart();
+  }));
+  document.querySelector('.cart-items').addEventListener('click', (event) => {
+    const button = event.target.closest('button');
+    if (!button) return;
+    const id = button.dataset.id;
+    if (button.dataset.action === 'increase') cart[id] += 1;
+    if (button.dataset.action === 'decrease') cart[id] > 1 ? cart[id] -= 1 : delete cart[id];
+    if (button.dataset.action === 'remove') delete cart[id];
+    saveCart();
+    updateCart();
+  });
+  document.querySelector('.clear-cart').addEventListener('click', () => {
+    cart = {};
+    saveCart();
+    updateCart();
+  });
+  document.querySelectorAll('.payment-option').forEach((option) => option.addEventListener('click', () => {
+    document.querySelectorAll('.payment-option').forEach((item) => item.classList.remove('selected'));
+    option.classList.add('selected');
+    document.querySelectorAll('.payment-option').forEach((item) => { item.hidden = item !== option; });
+    const payment = paymentDetails[option.dataset.payment];
+    document.querySelector('.payment-name').textContent = payment.name;
+    document.querySelector('.payment-code').textContent = payment.code;
+    document.querySelector('.payment-details').hidden = false;
+  }));
+  updateCart();
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Stitch of Hope</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="gallery-page">
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="logo" href="index.html"><img src="img.jpg/Stc.jpg" alt="Stitch of Hope"></a>
+    <a class="nav-message" href="programs.html">Stitch with purpose <span>→</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="impact.html">Impact</a>
+      <a href="financials.html">Financial Plan</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="page-intro">
+  <div class="container">
+    <p class="eyebrow">STITCH OF HOPE GALLERY</p>
+    <h1>Learning through making.</h1>
+    <p class="lead">A look inside our training sessions, creative work and the people building new possibilities through practical skills.</p>
+    <div class="buttons"><a class="btn primary" href="cart.html">Order Now</a></div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">THE CENTRE IN ACTION</p>
+      <h2>Skills, creativity and community.</h2>
+      <p>Every image captures a step in the journey from learning a first stitch to building confidence and a sustainable livelihood.</p>
+    </div>
+    <div class="gallery-grid">
+      <figure class="gallery-item gallery-item-featured"><img src="img.jpg/a.png" alt="Learners gathered for tailoring training at Stitch of Hope"><figcaption><strong>Learning together</strong><span>Practical training at the centre</span></figcaption></figure>
+      <figure class="gallery-item"><img src="img.jpg/training1.jpeg" alt="Learners practicing tailoring in a training session"><figcaption><strong>Hands-on learning</strong><span>Building confidence through practice</span></figcaption></figure>
+      <figure class="gallery-item"><img src="img.jpg/b.png" alt="Trainees working with sewing tools and materials"><figcaption><strong>Focused practice</strong><span>Turning lessons into usable skills</span></figcaption></figure>
+      <figure class="gallery-item"><img src="img.jpg/c.png" alt="Learners working at sewing machines in the workshop"><figcaption><strong>At the machine</strong><span>Developing production-ready skills</span></figcaption></figure>
+      <figure class="gallery-item"><img src="img.jpg/e.png" alt="An instructor guiding a learner at a sewing machine"><figcaption><strong>Guidance and mentorship</strong><span>Learning with support</span></figcaption></figure>
+      <figure class="gallery-item"><img src="img.jpg/training4.jpeg" alt="Trainer teaching learners how to take measurements"><figcaption><strong>Learning measurements</strong><span>Precision behind every garment</span></figcaption></figure>
+      <figure class="gallery-item"><img src="img.jpg/training6.jpeg" alt="Students learning pattern and fabric handling"><figcaption><strong>Working with fabric</strong><span>From pattern to finished idea</span></figcaption></figure>
+      <figure class="gallery-item"><img src="img.jpg/training7.jpeg" alt="Trainees practicing tailoring in the workshop"><figcaption><strong>Making with purpose</strong><span>Creativity in every session</span></figcaption></figure>
+      <figure class="gallery-item"><img src="img.jpg/h.png" alt="A class working together on garment construction and design"><figcaption><strong>Community in the classroom</strong><span>Growing skills side by side</span></figcaption></figure>
+      <figure class="gallery-item"><img src="img.jpg/i.png" alt="Trainees focused on sewing practice and fabric work"><figcaption><strong>Creating opportunity</strong><span>Small steps toward independence</span></figcaption></figure>
+      <figure class="gallery-item"><img src="img.jpg/p1.jpeg" alt="A finished fashion design created during training"><figcaption><strong>Creative expression</strong><span>Fashion, design and possibility</span></figcaption></figure>
+      <figure class="gallery-item"><img src="img.jpg/p3.jpeg" alt="Tailoring and fashion work produced by learners"><figcaption><strong>Work worth sharing</strong><span>Skills becoming enterprise</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+<section class="section dark">
+  <div class="container two-col">
+    <div>
+      <p class="eyebrow">KEEP THE STORY GOING</p>
+      <h2>Every stitch opens a door.</h2>
+    </div>
+    <div>
+      <p>Support practical training, mentorship and start-up opportunities for young people in Northern Uganda.</p>
+      <div class="buttons"><a class="btn secondary" href="contact.html">Get involved</a><a class="btn primary" href="programs.html">Explore programs</a></div>
+    </div>
+  </div>
+</section>
+<div class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden>
+  <button class="lightbox-close" type="button" aria-label="Close image viewer">&times;</button>
+  <button class="lightbox-control lightbox-previous" type="button" aria-label="Previous image">&#8249;</button>
+  <figure class="lightbox-figure">
+    <img class="lightbox-image" src="" alt="">
+    <figcaption><strong id="lightbox-title"></strong><span class="lightbox-caption"></span><small class="lightbox-counter"></small></figcaption>
+  </figure>
+  <button class="lightbox-control lightbox-next" type="button" aria-label="Next image">&#8250;</button>
+</div>
+</main>
+<footer>
+  <div class="container footer-wrap">
+    <div><strong>STITCH OF HOPE</strong><br><small>Tailoring & Fashion Design</small></div>
+    <p>© 2026 Stitch of Hope Tailoring & Fashion Design. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+  const galleryItems = [...document.querySelectorAll('.gallery-item')];
+  const lightbox = document.querySelector('.lightbox');
+  const lightboxImage = document.querySelector('.lightbox-image');
+  const lightboxTitle = document.querySelector('#lightbox-title');
+  const lightboxCaption = document.querySelector('.lightbox-caption');
+  const lightboxCounter = document.querySelector('.lightbox-counter');
+  const closeButton = document.querySelector('.lightbox-close');
+  let activeImage = 0;
+
+  const showImage = (index) => {
+    activeImage = (index + galleryItems.length) % galleryItems.length;
+    const item = galleryItems[activeImage];
+    const image = item.querySelector('img');
+    const title = item.querySelector('figcaption strong');
+    const caption = item.querySelector('figcaption span');
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt;
+    lightboxTitle.textContent = title.textContent;
+    lightboxCaption.textContent = caption.textContent;
+    lightboxCounter.textContent = `${activeImage + 1} / ${galleryItems.length}`;
+  };
+
+  const openLightbox = (index) => {
+    showImage(index);
+    lightbox.hidden = false;
+    document.body.classList.add('lightbox-open');
+    closeButton.focus();
+  };
+
+  const closeLightbox = () => {
+    lightbox.hidden = true;
+    document.body.classList.remove('lightbox-open');
+  };
+
+  galleryItems.forEach((item, index) => item.addEventListener('click', () => openLightbox(index)));
+  closeButton.addEventListener('click', closeLightbox);
+  document.querySelector('.lightbox-previous').addEventListener('click', () => showImage(activeImage - 1));
+  document.querySelector('.lightbox-next').addEventListener('click', () => showImage(activeImage + 1));
+  lightbox.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (event) => {
+    if (lightbox.hidden) return;
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowLeft') showImage(activeImage - 1);
+    if (event.key === 'ArrowRight') showImage(activeImage + 1);
+  });
+</script>
+</body>
+</html>
